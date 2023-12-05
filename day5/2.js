@@ -48,3 +48,6 @@ console.log(min);
 
 // This works - extremely annoyed that a brute-force approach worked! I can't immediately 
 // see why the value is what it was, will look at it again later...
+
+// Faster approach: modify algo to find whether some final map source has starting seed range
+// then go through each final map source's ranges ordered by smallest destinations.  
