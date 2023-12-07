@@ -14,9 +14,8 @@ number_strings = {
 }
 
 def find_number_string(string: str, i) -> int or None:
-	sliced = string[i:]
 	for k, v in number_strings.items():
-		if ''.join(sliced[:len(k)]) == k:
+		if ''.join(string[i:len(k)]) == k:
 			return v
 	return None
 

@@ -28,5 +28,5 @@ const locations = seeds
     return seed;
   })
   .sort((a, b) => a - b);
-  
+
 console.log(locations);
