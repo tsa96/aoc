@@ -23,7 +23,7 @@ int main()
 
 	readIn(directions, nodes);
 
-	const int numDirs = directions.length() - 1;
+	const int numDirs = directions.length() - 2; // ???
 	string curr = "AAA";
 	const string last = "ZZZ";
 	int steps = 0, i = 0;
@@ -34,7 +34,7 @@ int main()
 		curr = directions[i] == 'L' ? left : right;
 		if (curr == last)
 			break;
-		i = i == numDirs - 1 ? 0 : i + 1;
+		i = i == numDirs ? 0 : i + 1;
 	}
 
 	cout << steps << '\n';
