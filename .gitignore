@@ -2,4 +2,6 @@
 *.exe
 *.stackdump
 *.class
-
+*.sln
+obj/
+bin/
