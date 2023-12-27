@@ -9,3 +9,4 @@ _(every time I had to learn new stuff/get hints from Reddit)_
 - Day 8: Checked other solutions whilst my bruteforce approach ran to see if it had a chance of succeeding. Turns out it did, and the smart approach only works if input data has certain properties we weren't told about, so I maintain my innocence!
 - Day 17: Read up on pathfinding algorithms
 - Day 18: Read up on shoestring formula after spending an hour failing to figure out a way to decompose a polygon into triangles
+- Day 24: Used NumPy to solve a system of linear equations because I couldn't remember how gaussian elimination works
