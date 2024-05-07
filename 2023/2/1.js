@@ -29,3 +29,11 @@ for (const [gameID, { red, green, blue }] of Object.entries(games)) {
 }
 
 console.log(sum);
+
+
+
+class Foo {
+	barMethod() {
+
+	}
+}
