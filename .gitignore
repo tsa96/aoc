@@ -1,4 +1,4 @@
-in*.txt
+input.txt
 out*.txt
 tmp*.txt
 .vscode
