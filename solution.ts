@@ -1,7 +1,11 @@
-import { p1, p2, readInput, l } from "../../util";
+import '../../lib';
 
-const input = readInput();
+const lines = readLines();
 
-p1(() => {});
+part1(() => {
+  //
+});
 
-p2(() => {});
+part2(() => {
+  //
+});

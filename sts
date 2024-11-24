@@ -1,0 +1,10 @@
+#!/bin/sh
+YEAR=2021
+
+if [ "$2" = "copy" ]; then
+	export AOC_CLIPBOARD_COPY=1
+else
+	export AOC_CLIPBOARD_COPY=0
+fi
+
+ts-node -T $YEAR/"$1"/solution.ts
