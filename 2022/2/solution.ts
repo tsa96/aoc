@@ -1,4 +1,4 @@
-import { part1, part2, readInput, log } from "../../util";
+import { part1, part2, readInput, log } from "../../lib/util";
 
 const input = readInput();
 
