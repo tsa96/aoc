@@ -6,6 +6,7 @@ declare function part2(fn: SolutionFn | undefined): void;
 declare function readInput(): string;
 declare function readLines(): string[];
 declare function log(...params: Parameters<typeof console.log>): void;
+declare function strfy(...params: Parameters<typeof JSON.stringify>): void;
 declare function floor(n: number): number;
 declare function ceil(n: number): number;
 declare function round(n: number): number;

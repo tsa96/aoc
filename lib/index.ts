@@ -47,6 +47,7 @@ global.log = console.log;
 global.floor = Math.floor;
 global.ceil = Math.ceil;
 global.round = Math.round;
+global.strfy = JSON.stringify;
 
 // prettier-ignore
 global.alphabetLower = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -106,6 +107,7 @@ global.product = function (arr: number[]) {
   return arr.reduce((acc, n) => acc * n, 1);
 };
 
+
 Array.prototype.last = function () {
   return this.at(-1);
 };
@@ -129,3 +131,4 @@ Array.prototype.max = function () {
 Array.prototype.count = function (fn): number {
   return this.filter(fn).length;
 };
+
