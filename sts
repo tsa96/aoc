@@ -1,5 +1,5 @@
 #!/bin/sh
-YEAR=2021
+YEAR=2024
 
 if [ "$2" = "copy" ]; then
 	export AOC_CLIPBOARD_COPY=1
