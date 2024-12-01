@@ -23,6 +23,12 @@ declare function max(arr: number[]): number;
 declare function sum(arr: number[]): number;
 declare function product(arr: number[]): number;
 
+// prettier-ignore
+declare type Colors =
+  'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white' |
+  'bgBlack' | 'bgRed' | 'bgGreen' | 'bgYellow' | 'bgBlue' | 'bgMagenta' | 'bgCyan' | 'bgWhite';
+declare function colorize(str: string): Record<Colors, string>;
+
 // I finally get to use PROTOTYPES for once!!!!
 interface Array<T> {
   last(): T;

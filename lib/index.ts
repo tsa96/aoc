@@ -16,8 +16,13 @@ global.solution = function (fn: SolutionFn, part: number) {
   if (!solution) return;
 
   const t2 = process.hrtime.bigint();
+  log(Number(t2 - t1) / 1e9);
+  const timeColor = Number(t2 - t1) / 1e9 < 0.5 ? 'green' : 'red';
   console.log(
-    `Part ${part} [${(Number(t2 - t1) / 1e6).toFixed(3)} ms]: ${solution}`
+    colorize(`Part ${part}`).white +
+      colorize(`[${(Number(t2 - t1) / 1e6).toFixed(3)} ms]`)[timeColor] +
+      colorize(': ').white +
+      colorize(solution.toString()).yellow
   );
 
   if (process.env['AOC_CLIPBOARD_COPY'] === '1') {
@@ -107,7 +112,6 @@ global.product = function (arr: number[]) {
   return arr.reduce((acc, n) => acc * n, 1);
 };
 
-
 Array.prototype.last = function () {
   return this.at(-1);
 };
@@ -132,3 +136,23 @@ Array.prototype.count = function (fn): number {
   return this.filter(fn).length;
 };
 
+global.colorize = function (str: string) {
+  return {
+    black: `\x1b[30m${str}`,
+    red: `\x1b[31m${str}`,
+    green: `\x1b[32m${str}`,
+    yellow: `\x1b[33m${str}`,
+    blue: `\x1b[34m${str}`,
+    magenta: `\x1b[35m${str}`,
+    cyan: `\x1b[36m${str}`,
+    white: `\x1b[37m${str}`,
+    bgBlack: `\x1b[40m${str}\x1b[0m`,
+    bgRed: `\x1b[41m${str}\x1b[0m`,
+    bgGreen: `\x1b[42m${str}\x1b[0m`,
+    bgYellow: `\x1b[43m${str}\x1b[0m`,
+    bgBlue: `\x1b[44m${str}\x1b[0m`,
+    bgMagenta: `\x1b[45m${str}\x1b[0m`,
+    bgCyan: `\x1b[46m${str}\x1b[0m`,
+    bgWhite: `\x1b[47m${str}\x1b[0m`
+  };
+};
