@@ -19,8 +19,9 @@ global.solution = function (fn: SolutionFn, part: number) {
   log(Number(t2 - t1) / 1e9);
   const timeColor = Number(t2 - t1) / 1e9 < 0.5 ? 'green' : 'red';
   console.log(
-    colorize(`Part ${part}`).white +
-      colorize(`[${(Number(t2 - t1) / 1e6).toFixed(3)} ms]`)[timeColor] +
+    colorize(`Part ${part} `).white +
+      colorize(`[${(Number(t2 - t1) / 1e6).toFixed(3)} ms] `)[timeColor] +
+      colorize(`[${new Date().toLocaleTimeString()}]`).magenta +
       colorize(': ').white +
       colorize(solution.toString()).yellow
   );
@@ -52,6 +53,7 @@ global.log = console.log;
 global.floor = Math.floor;
 global.ceil = Math.ceil;
 global.round = Math.round;
+global.abs = Math.abs;
 global.strfy = JSON.stringify;
 
 // prettier-ignore
@@ -132,6 +134,10 @@ Array.prototype.max = function () {
   return max(this);
 };
 
+Array.prototype.max = function () {
+  return max(this);
+};
+
 Array.prototype.count = function (fn): number {
   return this.filter(fn).length;
 };
@@ -154,5 +160,21 @@ global.colorize = function (str: string) {
     bgMagenta: `\x1b[45m${str}\x1b[0m`,
     bgCyan: `\x1b[46m${str}\x1b[0m`,
     bgWhite: `\x1b[47m${str}\x1b[0m`
+  };
+};
+
+global.memoize = function (fn): any {
+  const map = new Map();
+
+  return (...args: any[]) => {
+    const key = JSON.stringify(args);
+
+    if (map.has(key)) {
+      return map.get(key);
+    }
+
+    const result = fn(...args);
+    map.set(key, result);
+    return result;
   };
 };

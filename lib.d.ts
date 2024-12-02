@@ -10,6 +10,7 @@ declare function strfy(...params: Parameters<typeof JSON.stringify>): void;
 declare function floor(n: number): number;
 declare function ceil(n: number): number;
 declare function round(n: number): number;
+declare function abs(n: number): number;
 declare function gcd(x: number, y: number): number;
 declare function lcm(x: number, y: number): number;
 declare function range(start: number, end: number): number[];
@@ -22,6 +23,7 @@ declare function min(arr: number[]): number;
 declare function max(arr: number[]): number;
 declare function sum(arr: number[]): number;
 declare function product(arr: number[]): number;
+declare function memoize<T extends Function>(fn: T): T;
 
 // prettier-ignore
 declare type Colors =
