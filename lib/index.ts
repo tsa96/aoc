@@ -9,7 +9,7 @@ global.cbcopy = function (input: any) {
   child_process.spawn('clip').stdin.end(util.inspect(input));
 };
 
-global.solution = function (fn: SolutionFn, part: number) {
+global.solution = function (fn: SolutionFn, part: string) {
   const t1 = process.hrtime.bigint();
 
   const solution = fn();
@@ -32,12 +32,17 @@ global.solution = function (fn: SolutionFn, part: number) {
 };
 
 global.part1 = function (fn: SolutionFn) {
-  solution(fn, 1);
+  solution(fn, '1');
 };
 
 global.part2 = function (fn: SolutionFn | undefined) {
   if (!fn) return;
-  solution(fn, 2);
+  solution(fn, '2');
+};
+
+global.extraSolution = function (fn: SolutionFn | undefined) {
+  if (!fn) return;
+  solution(fn, 'extra')
 };
 
 global.readInput = function (): string {

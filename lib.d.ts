@@ -1,6 +1,6 @@
 declare type SolutionFn = () => number | void;
 declare function cbcopy(input: any): void;
-declare function solution(fn: SolutionFn, part: number): void;
+declare function solution(fn: SolutionFn, part: string): void;
 declare function part1(fn: SolutionFn): void;
 declare function part2(fn: SolutionFn | undefined): void;
 declare function readInput(): string;

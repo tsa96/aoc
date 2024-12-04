@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "strict": false,
-    "target": "ESNext",
-    "lib": ["ESNext"],
+    "target": "ES2024",
+    "lib": ["ES2024"],
     "module": "commonjs",
     "types": ["node"],
     "baseUrl": "./",
