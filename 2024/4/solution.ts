@@ -5,6 +5,7 @@ const len = grid.length;
 
 part1(() => {
   let sum = 0;
+  //prettier-ignore
   const searches = [
     [ [0, 0], [0, 1], [0, 2], [0, 3] ],
     [ [0, 0], [1, 0], [2, 0], [3, 0] ],
