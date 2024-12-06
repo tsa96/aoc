@@ -183,3 +183,8 @@ global.memoize = function (fn): any {
     return result;
   };
 };
+
+// Slow, stupid, whatever
+global.enc = function (...args: unknown[]) {
+  return JSON.stringify(args);
+}

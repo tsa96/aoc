@@ -24,6 +24,7 @@ declare function max(arr: number[]): number;
 declare function sum(arr: number[]): number;
 declare function product(arr: number[]): number;
 declare function memoize<T extends Function>(fn: T): T;
+declare function enc(...args: any[]): string;
 
 // prettier-ignore
 declare type Colors =
