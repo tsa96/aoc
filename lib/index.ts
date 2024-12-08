@@ -100,11 +100,11 @@ global.match = function <T>(key: string | number, matcher: Record<string, T | Fu
   }
 };
 
-global.min = function (arr: number[]) {
+global.min = function (...arr: number[]) {
   return Math.min(...arr);
 };
 
-global.max = function (arr: number[]) {
+global.max = function (...arr: number[]) {
   return Math.max(...arr);
 };
 

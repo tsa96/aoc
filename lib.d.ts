@@ -19,10 +19,10 @@ declare function match<T>(
   key: string | number,
   matcher: Record<string, T | Function>
 ): T;
-declare function min(arr: number[]): number;
-declare function max(arr: number[]): number;
-declare function sum(arr: number[]): number;
-declare function product(arr: number[]): number;
+declare function min(...arr: number[]): number;
+declare function max(...arr: number[]): number;
+declare function sum(...arr: number[]): number;
+declare function product(...arr: number[]): number;
 declare function memoize<T extends Function>(fn: T): T;
 declare function enc(...args: any[]): string;
 
