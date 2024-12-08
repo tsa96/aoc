@@ -94,25 +94,25 @@ global.from = function <T>(length: number, mapFn?: (i: number) => T): T[] {
 global.match = function <T>(key: string | number, matcher: Record<string, T | Function>) {
   const value = matcher[key];
   if (value instanceof Function) {
-    return value();
+    return value?.();
   } else {
     return value;
   }
 };
 
-global.min = function (arr: number[]) {
+global.min = function (...arr: number[]) {
   return Math.min(...arr);
 };
 
-global.max = function (arr: number[]) {
+global.max = function (...arr: number[]) {
   return Math.max(...arr);
 };
 
-global.sum = function (arr: number[]) {
+global.sum = function (...arr: number[]) {
   return arr.reduce((acc, n) => acc + n, 0);
 };
 
-global.product = function (arr: number[]) {
+global.product = function (...arr: number[]) {
   return arr.reduce((acc, n) => acc * n, 1);
 };
 
@@ -187,25 +187,25 @@ global.enc = function (...args: unknown[]) {
 };
 
 class HashSet extends Set {
-  override add(...value: any[]) {
+  override add(value: any) {
     return super.add(JSON.stringify(value));
   }
 
-  override delete(...value: any[]): boolean {
+  override delete(value: any): boolean {
     return super.delete(JSON.stringify(value));
   }
 
-  override has(...value: any[]): boolean {
+  override has(value: any): boolean {
     return super.has(JSON.stringify(value));
   }
 };
 
 class HashMap extends Map {
-  override get(...key: any[]) {
+  override get(key: any) {
     return super.get(JSON.stringify(key));
   }
 
-  override set(value: any, ...key: any[]) {
+  override set(key: any, value: any) {
     return super.set(JSON.stringify(key), value);
   }
 
@@ -213,7 +213,7 @@ class HashMap extends Map {
     return super.has(JSON.stringify(key));
   }
 
-  override delete(...key: any[]) {
+  override delete(key: any) {
     return super.delete(JSON.stringify(key));
   }
 }

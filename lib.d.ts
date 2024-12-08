@@ -19,24 +19,26 @@ declare function match<T>(
   key: string | number,
   matcher: Record<string, T | Function>
 ): T;
-declare function min(arr: number[]): number;
-declare function max(arr: number[]): number;
-declare function sum(arr: number[]): number;
-declare function product(arr: number[]): number;
+declare function min(...arr: number[]): number;
+declare function max(...arr: number[]): number;
+declare function sum(...arr: number[]): number;
+declare function product(...arr: number[]): number;
 declare function memoize<T extends Function>(fn: T): T;
 declare function enc(...args: any[]): string;
 
+// Set than stringifies all values
 declare class HashSet extends Set<any> {
-  override add(...value: any[]): this;
-  override delete(...value: any[]): boolean;
-  override has(...value: any[]): boolean;
+  override add(value: any): this;
+  override delete(value: any): boolean;
+  override has(value: any): boolean;
 }
 
+// Map that stringifies all keys
 declare class HashMap extends Map<any, any> {
-  override set(value: any, ...key: any[]): this;
-  override get(...key: any[]): any;
-  override delete(...key: any[]): boolean;
-  override has(...key: any[]): boolean;
+  override set(key: any, value: any): this;
+  override get(key: any): any;
+  override delete(key: any): boolean;
+  override has(key: any): boolean;
 }
 
 // prettier-ignore

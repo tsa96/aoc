@@ -55,11 +55,11 @@ part2(() => {
   function reorder(pages: any[], iters) {
     if (iters > 10) return;
     let sorted = true;
-    const seen = new Set();
+    const seen = new HashSet();
     for (const [i, p1] of pages.entries()) {
       for (const [j, p2] of pages.entries()) {
-        if (i == j || seen.has({ i, j })) continue;
-        seen.add(strfy({ i, j }));
+        if (i == j || seen.has(i, j)) continue;
+        seen.add(i, j);
 
         if ((i < j && test(p2, p1)) || (j < i && test(p1, p2))) {
           [pages[i], pages[j]] = [pages[j], pages[i]];
