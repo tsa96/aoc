@@ -26,6 +26,19 @@ declare function product(arr: number[]): number;
 declare function memoize<T extends Function>(fn: T): T;
 declare function enc(...args: any[]): string;
 
+declare class HashSet extends Set<any> {
+  override add(...value: any[]): this;
+  override delete(...value: any[]): boolean;
+  override has(...value: any[]): boolean;
+}
+
+declare class HashMap extends Map<any, any> {
+  override set(value: any, ...key: any[]): this;
+  override get(...key: any[]): any;
+  override delete(...key: any[]): boolean;
+  override has(...key: any[]): boolean;
+}
+
 // prettier-ignore
 declare type Colors =
   'black' | 'red' | 'green' | 'yellow' | 'blue' | 'magenta' | 'cyan' | 'white' |

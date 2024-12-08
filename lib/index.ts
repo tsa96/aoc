@@ -42,7 +42,7 @@ global.part2 = function (fn: SolutionFn | undefined) {
 
 global.extraSolution = function (fn: SolutionFn | undefined) {
   if (!fn) return;
-  solution(fn, 'extra')
+  solution(fn, 'extra');
 };
 
 global.readInput = function (): string {
@@ -91,10 +91,7 @@ global.from = function <T>(length: number, mapFn?: (i: number) => T): T[] {
   }
 };
 
-global.match = function <T>(
-  key: string | number,
-  matcher: Record<string, T | Function>
-) {
+global.match = function <T>(key: string | number, matcher: Record<string, T | Function>) {
   const value = matcher[key];
   if (value instanceof Function) {
     return value();
@@ -187,4 +184,41 @@ global.memoize = function (fn): any {
 // Slow, stupid, whatever
 global.enc = function (...args: unknown[]) {
   return JSON.stringify(args);
+};
+
+class HashSet extends Set {
+  override add(...value: any[]) {
+    return super.add(JSON.stringify(value));
+  }
+
+  override delete(...value: any[]): boolean {
+    return super.delete(JSON.stringify(value));
+  }
+
+  override has(...value: any[]): boolean {
+    return super.has(JSON.stringify(value));
+  }
+};
+
+class HashMap extends Map {
+  override get(...key: any[]) {
+    return super.get(JSON.stringify(key));
+  }
+
+  override set(value: any, ...key: any[]) {
+    return super.set(JSON.stringify(key), value);
+  }
+
+  override has(...key: any[]) {
+    return super.has(JSON.stringify(key));
+  }
+
+  override delete(...key: any[]) {
+    return super.delete(JSON.stringify(key));
+  }
 }
+
+// @ts-ignore
+global.HashSet = HashSet;
+// @ts-ignore
+global.HashMap = HashMap;
