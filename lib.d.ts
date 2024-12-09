@@ -25,6 +25,7 @@ declare function sum(...arr: number[]): number;
 declare function product(...arr: number[]): number;
 declare function memoize<T extends Function>(fn: T): T;
 declare function enc(...args: any[]): string;
+declare function pairs<T>(arr: T[]): Generator<[T, T]>;
 
 // Set than stringifies all values
 declare class HashSet extends Set<any> {

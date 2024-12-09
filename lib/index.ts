@@ -16,7 +16,6 @@ global.solution = function (fn: SolutionFn, part: string) {
   if (!solution) return;
 
   const t2 = process.hrtime.bigint();
-  log(Number(t2 - t1) / 1e9);
   const timeColor = Number(t2 - t1) / 1e9 < 0.5 ? 'green' : 'red';
   console.log(
     colorize(`Part ${part} `).white +
@@ -222,3 +221,11 @@ class HashMap extends Map {
 global.HashSet = HashSet;
 // @ts-ignore
 global.HashMap = HashMap;
+
+global.pairs = function*<T>(array: T[]) {
+  for (let i = 0; i < array.length; i++) {
+    for (let j = i + 1; j < array.length; j++) {
+      yield [array[i], array[j]];
+    }
+  }
+}

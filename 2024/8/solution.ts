@@ -1,9 +1,8 @@
 import '../../lib';
 
 const lines = readLines();
-const yLen = lines.length;
-const xLen = lines[0].length;
-const map = new Map();
+const len = lines.length;
+const map = new Map<string, [number, number][]>();
 const hits = new HashSet();
 
 lines.forEach((line, i) =>
@@ -17,41 +16,45 @@ lines.forEach((line, i) =>
 );
 
 part1(() => {
-  [...map.values()].forEach((ants) =>
-    ants.forEach(([xa, ya], i) =>
-      ants
-        .filter((_, j) => i != j) // pairs twice, doesnt matter for p1
-        .forEach(([xb, yb], j) => {
-          [xa, xb] = [xa, xb].sort();
-          const xdiff = xb - xa;
-          const [x1, x2] = [xb + xdiff, xa - xdiff];
+  map.values().forEach((ants) =>
+    pairs(ants).forEach(([[xa, ya], [xb, yb]]) => {
+      const x1 = 2 * xa - xb;
+      const x2 = 2 * xb - xa;
 
-          [ya, yb] = [ya, yb].sort();
-          const ydiff = yb - ya;
-          const [y1, y2] = [yb + ydiff, ya - ydiff];
+      const y1 = 2 * ya - yb;
+      const y2 = 2 * yb - ya;
 
-          if (x1 >= 0 && x1 < xLen && y1 >= 0 && y1 < yLen) {
-            log({ xa, xb, xdiff, x1, ya, yb, ydiff,y1} );
-            hits.add([x1, y1]);
-          }
+      if (x1 >= 0 && y1 >= 0) {
+        hits.add([x1, y1]);
+      }
 
-          if (x2 >= 0 && x2 < xLen && y2 >= 0 && y2 < yLen) {
-
-            log({ xa, xb, xdiff, x2, ya, yb, ydiff,y2 });
-            hits.add([x2, y2]);
-          }
-
-          // wrongo - x y pairing incorrect because flipping the vars (ugh)
-        })
-    )
+      if (x2 < len && y2 < len) {
+        hits.add([x2, y2]);
+      }
+    })
   );
 
-  log(hits);
   log(
-    from(yLen, (y) =>
-      from(xLen, (x) => (hits.has([x, y]) ? '#' : '.')).join('')
+    // Went insane trying to find issue with solution and wrote below to debug.
+    // Turns out I delete the last line of the input somehow!
+    from(len, (y) =>
+      from(len, (x) => {
+        for (const [k, v] of map.entries()) {
+          for (const z of v) {
+            if (x == z[0] && y == z[1]) {
+              return k;
+            }
+          }
+        }
+
+        if (hits.has([x, y])) return '#';
+
+        return '.';
+      }).join('')
     ).join('\n')
   );
+
+  // Still wrong, no idea what I'm doing wrong, leaving for now.
   return hits.size;
 });
 
