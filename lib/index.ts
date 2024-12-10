@@ -120,28 +120,33 @@ Array.prototype.last = function () {
 };
 
 Array.prototype.sum = function () {
-  return sum(this);
+  return sum(...this);
 };
 
 Array.prototype.product = function () {
-  return product(this);
+  return product(...this);
 };
 
 Array.prototype.min = function () {
-  return min(this);
+  return min(...this);
 };
 
 Array.prototype.max = function () {
-  return max(this);
+  return max(...this);
 };
 
 Array.prototype.max = function () {
-  return max(this);
+  return max(...this);
 };
 
 Array.prototype.count = function (fn): number {
   return this.filter(fn).length;
 };
+
+Array.prototype.swap = function (a: number, b:number) {
+  // Might have overhead, though V8 has some tricks here IIRC
+  [this[a], this[b]] = [this[b], this[a]]
+}
 
 global.colorize = function (str: string) {
   return {

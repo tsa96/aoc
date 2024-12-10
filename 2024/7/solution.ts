@@ -8,6 +8,7 @@ part1(() => {
   return structuredClone(lines)
     .map(([result, numbers]) => {
       const atts = [numbers.shift()];
+
       numbers.forEach((num, i) => {
         atts.forEach((att, j) => {
           atts[j] = att + num;
@@ -24,11 +25,12 @@ part2(() => {
   return structuredClone(lines)
     .map(([result, numbers]) => {
       const atts = [numbers.shift()];
+
       numbers.forEach((num, i) => {
         atts.forEach((att, j) => {
           atts[j] = att + num;
           atts.push(att * num);
-          atts.push(Number(att.toString() + num.toString()))
+          atts.push(Number(att.toString() + num.toString()));
         });
       });
 

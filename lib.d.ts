@@ -56,4 +56,5 @@ interface Array<T> {
   min(): number;
   max(): number;
   count(...params: Parameters<typeof Array.prototype.filter>): number;
+  swap(a: number, b:number);
 }
