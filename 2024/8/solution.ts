@@ -34,25 +34,7 @@ part1(() => {
     })
   );
 
-  log(
-    // Went insane trying to find issue with solution and wrote below to debug.
-    // Turns out I delete the last line of the input somehow!
-    from(len, (y) =>
-      from(len, (x) => {
-        for (const [k, v] of map.entries()) {
-          for (const z of v) {
-            if (x == z[0] && y == z[1]) {
-              return k;
-            }
-          }
-        }
 
-        if (hits.has([x, y])) return '#';
-
-        return '.';
-      }).join('')
-    ).join('\n')
-  );
 
   // Still wrong, no idea what I'm doing wrong, leaving for now.
   return hits.size;

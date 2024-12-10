@@ -6,6 +6,7 @@ declare function part2(fn: SolutionFn | undefined): void;
 declare function readInput(): string;
 declare function readLines(): string[];
 declare function log(...params: Parameters<typeof console.log>): void;
+declare function logp(...params: Parameters<typeof console.log>): void;
 declare function strfy(...params: Parameters<typeof JSON.stringify>): void;
 declare function floor(n: number): number;
 declare function ceil(n: number): number;
@@ -56,5 +57,9 @@ interface Array<T> {
   min(): number;
   max(): number;
   count(...params: Parameters<typeof Array.prototype.filter>): number;
-  swap(a: number, b:number);
+  swap(a: number, b: number): void;
+  unique(): T;
 }
+
+declare type vec2 = [number, number];
+declare type vec3 = [number, number];

@@ -53,7 +53,8 @@ global.readLines = function (): string[] {
 };
 
 // lol
-global.log = console.log;
+global.log = (...args) => console.log(JSON.stringify(...args));
+global.logp = (...args) => console.log(JSON.stringify(...args, null, 2));
 global.floor = Math.floor;
 global.ceil = Math.ceil;
 global.round = Math.round;
@@ -90,7 +91,10 @@ global.from = function <T>(length: number, mapFn?: (i: number) => T): T[] {
   }
 };
 
-global.match = function <T>(key: string | number, matcher: Record<string, T | Function>) {
+global.match = function <T>(
+  key: string | number,
+  matcher: Record<string, T | Function>
+) {
   const value = matcher[key];
   if (value instanceof Function) {
     return value?.();
@@ -143,10 +147,19 @@ Array.prototype.count = function (fn): number {
   return this.filter(fn).length;
 };
 
-Array.prototype.swap = function (a: number, b:number) {
+// TODO: Write this! I want a function that can filter and map, providing original index to map fn
+// Array.prototype.filterMap = function(filterFn: any , mapFn) {
+
+// }
+
+Array.prototype.swap = function (a: number, b: number) {
   // Might have overhead, though V8 has some tricks here IIRC
-  [this[a], this[b]] = [this[b], this[a]]
-}
+  [this[a], this[b]] = [this[b], this[a]];
+};
+
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
 
 global.colorize = function (str: string) {
   return {
@@ -202,7 +215,7 @@ class HashSet extends Set {
   override has(value: any): boolean {
     return super.has(JSON.stringify(value));
   }
-};
+}
 
 class HashMap extends Map {
   override get(key: any) {
@@ -227,10 +240,10 @@ global.HashSet = HashSet;
 // @ts-ignore
 global.HashMap = HashMap;
 
-global.pairs = function*<T>(array: T[]) {
+global.pairs = function* <T>(array: T[]) {
   for (let i = 0; i < array.length; i++) {
     for (let j = i + 1; j < array.length; j++) {
       yield [array[i], array[j]];
     }
   }
-}
+};
