@@ -5,6 +5,10 @@ import child_process from 'node:child_process';
 
 // Probably a better way to do globals, whatevs
 
+BigInt.prototype['toJSON'] = function () {
+  return this.toString();
+};
+
 global.cbcopy = function (input: any) {
   child_process.spawn('clip').stdin.end(util.inspect(input));
 };
@@ -53,8 +57,7 @@ global.readLines = function (): string[] {
 };
 
 // lol
-global.log = (...args) => console.log(JSON.stringify(...args));
-global.logp = (...args) => console.log(JSON.stringify(...args, null, 2));
+global.log = (...args) => console.log(...args);
 global.floor = Math.floor;
 global.ceil = Math.ceil;
 global.round = Math.round;

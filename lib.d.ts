@@ -50,12 +50,13 @@ declare type Colors =
 declare function colorize(str: string): Record<Colors, string>;
 
 // I finally get to use PROTOTYPES for once!!!!
+type NumberOrDie<T> = T extends number | bigint ? T : never;
 interface Array<T> {
   last(): T;
-  product(): number;
-  sum(): number;
-  min(): number;
-  max(): number;
+  product(): NumberOrDie<T>;
+  sum(): NumberOrDie<T>;
+  min(): NumberOrDie<T>;
+  max(): NumberOrDie<T>;
   count(...params: Parameters<typeof Array.prototype.filter>): number;
   swap(a: number, b: number): void;
   unique(): T;
