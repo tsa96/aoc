@@ -27,6 +27,9 @@ declare function product(...arr: number[]): number;
 declare function memoize<T extends Function>(fn: T): T;
 declare function enc(...args: any[]): string;
 declare function pairs<T>(arr: T[]): Generator<[T, T]>;
+declare const XDirs: number[];
+declare const YDirs: number[];
+declare const XYDirs: [number, number][];
 
 // Set than stringifies all values
 declare class HashSet extends Set<any> {

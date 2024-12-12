@@ -250,3 +250,12 @@ global.pairs = function* <T>(array: T[]) {
     }
   }
 };
+
+global.XDirs = [1, 0, -1, 0];
+global.YDirs = [0, 1, 0, -1];
+global.XYDirs = [
+  [1, 0],
+  [0, 1],
+  [-1, 0],
+  [0, -1]
+];
