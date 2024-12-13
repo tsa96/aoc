@@ -251,11 +251,18 @@ global.pairs = function* <T>(array: T[]) {
   }
 };
 
+// @ts-ignore
 global.XDirs = [1, 0, -1, 0];
+// @ts-ignore
 global.YDirs = [0, 1, 0, -1];
+// @ts-ignore
 global.XYDirs = [
   [1, 0],
   [0, 1],
   [-1, 0],
   [0, -1]
 ];
+
+global.makeID = function () {
+  return +Math.random().toString().slice(2);
+};
